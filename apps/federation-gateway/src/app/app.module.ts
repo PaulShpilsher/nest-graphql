@@ -1,4 +1,4 @@
-import { IntrospectAndCompose } from '@apollo/gateway';
+import { IntrospectAndCompose, RemoteGraphQLDataSource } from '@apollo/gateway';
 import { ApolloGatewayDriverConfig, ApolloGatewayDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { RequestHandler } from '@nestjs/common/interfaces';
@@ -42,6 +42,14 @@ const handleAuthContext = ({ req }) => {
             { name: 'tasks', url: 'http://localhost:3332/graphql' },
           ],
         }),
+        buildService({ name, url }) {
+          return new RemoteGraphQLDataSource({
+            url,
+            willSendRequest({ request, context }) {
+              request.http.headers.set('user', context.user ? JSON.stringify(context.user) : null);
+            },
+          });
+        }
       },
     }),
   ],
