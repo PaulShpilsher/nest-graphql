@@ -3,6 +3,7 @@ import { CreateUserInput } from './dto/create-user.input';
 import { LoginInput } from './dto/login.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { sign } from 'jsonwebtoken';
+import { UserToken } from './entities/userToken.entity';
 
 @Injectable()
 export class UsersService {
@@ -26,7 +27,7 @@ export class UsersService {
     return `This action removes a #${id} user`;
   }
 
-  login(loginInput: LoginInput) {
+  login(loginInput: LoginInput) : UserToken {
     // TODO: implement logic properly...
     if(loginInput.username === 'foo' && loginInput.password === 'bar'){
       const accessToken =  sign({foo: 'bar'},  process.env.SECRET);
