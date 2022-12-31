@@ -6,6 +6,8 @@
 
 ## Development server
 
+Run everyhing: `nx run-many --target=serve`
+
 Run `nx serve federation-gateway` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Understand this workspace
