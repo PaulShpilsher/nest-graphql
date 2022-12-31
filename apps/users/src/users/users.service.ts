@@ -29,8 +29,8 @@ export class UsersService {
   login(loginInput: LoginInput) {
     // TODO: implement logic properly...
     if(loginInput.username === 'foo' && loginInput.password === 'bar'){
-      const accessToken =  sign({foo: 'bar'}, 'supersecretstring')
-      return {accessToken}
+      const accessToken =  sign({foo: 'bar'},  process.env.SECRET);
+      return {accessToken};
     }
     throw new HttpException('BadRequest', HttpStatus.BAD_REQUEST);
   }
