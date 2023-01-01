@@ -10,8 +10,10 @@ export class TasksResolver {
   constructor(private readonly tasksService: TasksService) {}
 
   @Mutation(() => Task)
-  createTask( @Args('createTaskInput') createTaskInput: CreateTaskInput,
-              @CurrentUser() loggedUser) {
+  createTask(
+    @Args('createTaskInput') createTaskInput: CreateTaskInput,
+    @CurrentUser() loggedUser
+  ) {
     console.log(loggedUser);
     return this.tasksService.create(createTaskInput);
   }

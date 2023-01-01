@@ -5,7 +5,7 @@ import { UpdateTaskInput } from './dto/update-task.input';
 @Injectable()
 export class TasksService {
   create(createTaskInput: CreateTaskInput) {
-    return { exampleField: createTaskInput.exampleField  + 1 };
+    return { exampleField: createTaskInput.exampleField + 1 };
   }
 
   findAll() {
